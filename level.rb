@@ -1,3 +1,5 @@
+require 'faker'
+
 class Level
   # Level objects will store the quotes to be typed, as well as provide
   # information about total num quotes and total num words that will be
@@ -6,7 +8,7 @@ class Level
 
   def initialize(number_quotes)
     # Populate the quotes array with new quotes
-    @quotes # = quote genertaino func
+    @quotes = quote_generator(number_quotes)
   end
 
   def total_quotes
@@ -21,6 +23,14 @@ class Level
       words += temp_array.length
     end
     return words
+  end
+
+  def quote_generator(total_quotes)
+    quotes = []
+    total_quotes.times do
+      quotes << Faker::GreekPhilosophers.quote
+    end
+      return quotes
   end
 
 end
