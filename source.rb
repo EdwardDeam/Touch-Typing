@@ -9,13 +9,13 @@ def menu
   input = gets.strip.to_i
 end
 
-def quote_generator(n)
-    n.times do
-        puts Faker::GreekPhilosophers.quote
+def quote_generator(total_quotes)
+    quotes = []
+    total_quotes.times do
+        quotes << Faker::GreekPhilosophers.quote
     end
+    return quotes
 end
-
-stage_1 = quote_generator(10)
 
 def intialize
     program_running = (true)
@@ -36,6 +36,8 @@ end
 
 # def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
 # end
+
+
 
 #stage_1 generates the first stage of quotes ('Level 1')
 
