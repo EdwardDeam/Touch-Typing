@@ -77,6 +77,14 @@ def program_launch
   end
 end
 
+def words_per_minute(words, time)
+  wpm = (words / time)
+  return wpm
+end
+
+
+# def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
+# end
 
 
 app = Game.new()
