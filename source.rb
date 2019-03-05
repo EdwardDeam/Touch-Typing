@@ -101,8 +101,8 @@ return acc_percentage
 end
 #ACCURACY COUNTER
 
-def words_per_minute(totalwords, totaltime)
-  wpm = (totalwords / totaltime)
+def words_per_minute(words, time)
+  wpm = (words / time)
   return wpm
 end
 
