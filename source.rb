@@ -1,5 +1,5 @@
-# require 'faker'
-# require 'colorize'
+
+require 'colorize'
 require_relative 'level.rb'
 require_relative 'game.rb'
   
@@ -49,15 +49,6 @@ def colourblind_menu
   end
 end
   
-def quote_generator(total_quotes)
-    quotes = []
-    total_quotes.times do
-        quotes << Faker::GreekPhilosophers.quote
-    end
-    return quotes
-end
-  
-  
 def colourblind_mode
     program_running = (true)
     while(program_running)
@@ -85,13 +76,7 @@ def program_launch
   end
 end
 
-def quote_generator(total_quotes)
-  quotes = []
-  total_quotes.times do
-    quotes << Faker::GreekPhilosophers.quote
-  end
-    return quotes
-end
+
 
 
 #stage_1 generates the first stage of quotes ('Level 1')
