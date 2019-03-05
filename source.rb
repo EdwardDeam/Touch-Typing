@@ -93,6 +93,20 @@ def quote_generator(total_quotes)
     return quotes
 end
 
+quote_length = quotes[]
+
+def accuracy_percentage(errors, stringlength)
+acc_percentage = (error.to_f / stringlength.to_f) * 100
+return acc_percentage
+end
+#ACCURACY COUNTER
+
+
+
+# def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
+# end
+
+
 
 #stage_1 generates the first stage of quotes ('Level 1')
 
