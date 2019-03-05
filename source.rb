@@ -6,6 +6,7 @@ def menu
   puts "1. START GAME". center(50).light_blue
   puts "2. EXIT".center(50).light_blue
   puts "#{"*".light_blue}#{"*".cyan}#{"*".blue}"*17
+  input = gets.strip.to_i
 end
 
 def quote_generator(n)
@@ -15,6 +16,26 @@ def quote_generator(n)
 end
 
 stage_1 = quote_generator(10)
+
+def intialize
+    program_running = (true)
+    while(program_running)
+      input = menu
+      if(input == 1)
+        #insert game loop here when made
+      elsif(input == 2)
+        break
+      else
+        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
+        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
+        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
+        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
+      end
+    end
+end
+
+# def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
+# end
 
 #stage_1 generates the first stage of quotes ('Level 1')
 
