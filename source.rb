@@ -1,6 +1,6 @@
 # require 'faker'
 # require 'colorize'
-
+require_relative 'level.rb'
   
 def launch_screen
   #ASKS WHETHER YOU WANT TO PLAY IN COLOURBLIND MODE
