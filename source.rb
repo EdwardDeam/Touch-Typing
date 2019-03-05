@@ -1,6 +1,7 @@
-require 'faker'
-require 'colorize'
-
+# require 'faker'
+# require 'colorize'
+require_relative 'level.rb'
+require_relative 'game.rb'
   
 def launch_screen
   #ASKS WHETHER YOU WANT TO PLAY IN COLOURBLIND MODE
@@ -109,25 +110,7 @@ end
 
 #stage_1 generates the first stage of quotes ('Level 1')
 
-def accuracy_compare(original, user_string)
-  if(original == user_string)
-    puts "MATCH!"
-    return 
-  end
-  original_arr = original.split("")
-  user_string_arr = user_string.split("")
-  # puts original_arr
-  # puts user_string_arr
-  errors = 0
-  original_arr.each_with_index do |letter, index|
-    if letter != user_string_arr[index]
-      errors += 1
-    end
-  end
-  puts errors
-end
-
-def accuracy_compare_two(original, user_string)
+def accuracy_comparison(original, user_string)
   # Function: Compare two strings and return the number of differences
   # as an integer.
   # Integer counter of errors
@@ -158,6 +141,10 @@ def letter_accuracy(original, test)
   # to work with.
   original_word = original.split("")
   test_word = test.split("")
+  # Find the minimum number of errors by finding the difference in length
+  # between the two arrays. eg "hello" vs "hellooo" would be a min of 2 
+  # errors.
+  length_error = test_word.length - original_word.length
   # Runs two tests, one to compare the index of each array with each other
   # (index_errors).
   # The other looks for the next letter needed and searches the array
@@ -187,14 +174,17 @@ def letter_accuracy(original, test)
       next_letter = original_word[letter_index]
     end
   end
-  # Find the smaller number of errors and return to user.
-  errors = [letter_test_errors, index_errors].min
-  return errors
+  # Find the smaller number of errors from the tests.
+  test_errors = ([letter_test_errors, index_errors].min)
+  # puts("#{test_errors} test error")
+  # puts("#{length_error} min errors")
+  # Return the greater of test_errors or min_errors
+  test_errors < length_error ? length_error : test_errors
 end
 test_str =      "Don't sweat the petty things and don't pet the sweaty things."
-user_test_str = "Don't sweat the petty things and don't pet the sweayy things."
+user_test_str = "Don't sweat the petty things and don't pet the sweaty things."
 prefect_str =   "Don't sweat the petty things and don't pet the sweaty things."
-accuracy_compare_two(test_str,user_test_str)
+# puts accuracy_comparison(test_str,user_test_str)
 
 # Require File
 require 'date'
@@ -217,3 +207,24 @@ def get_input(times_array)
   # Return the input string.
   return input
 end
+
+def show_quote(quote_string)
+  puts (quote_string)
+end
+
+##########################################
+# test_quotes = quote_generator(5)
+test_quotes = ["Don't sweat the petty things and don't pet the sweaty things.","Don't sweat the petty things and don't pet the sweaty things."]
+times = []
+errors =0
+test_quotes.each do |quote|
+  show_quote(quote)
+  input = get_input(times)
+  errors += accuracy_comparison(quote, input)
+  #Get Accuracy
+  #Get WPM
+end
+puts("Total Time: #{times.sum}")
+puts("Total Errors: #{errors}")
+
+
