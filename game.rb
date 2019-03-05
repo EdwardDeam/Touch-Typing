@@ -2,13 +2,13 @@ require 'date'
 require_relative 'level.rb'
 
 class Game
-  attr_reader :level, :times, :total_errors
+  attr_reader :level, :total_time, :total_errors, :words_per_min , :accuracy
   attr_accessor :max_num_quotes
 
   def initialize(max_num_quotes = 2)
     @max_num_quotes = max_num_quotes
     @level = Level.new(max_num_quotes)
-    @times = []
+    @total_time = 0
     @total_errors = 0
     ### TEMP
     @accuracy = 0
@@ -21,7 +21,7 @@ class Game
        user_str = get_input
        errors = accuracy_comparison(quote, user_str)
        @accuracy = accuracy_percentage(errors, quote.length)
-       #WPM
+       @words_per_min = words_per_minute(@level.total_words, @total_time)
     end
   end
 
@@ -38,7 +38,7 @@ class Game
     # delta time in a float.
     delta = tp2 - tp1
     # Add the time to the time array that was passed in.
-    times << delta
+    @total_time += delta
     # Return the input string.
     return input
   end
@@ -116,8 +116,13 @@ class Game
   end
 
   def accuracy_percentage(total_errors, stringlength)
-    acc_percentage = (total_errors.to_f / stringlength.to_f) * 100
-    return acc_percentage
+    acc_percentage = (stringlength.to_f - total_errors.to_f )  / stringlength * 100
+    return acc_percentage.round(2)
+  end
+
+  def words_per_minute(words, time)
+    wpm = (words.to_f / time.to_f) * 60.0
+    return wpm.round(2)
   end
 
   def show_quote(quote_string)
