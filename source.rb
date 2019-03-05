@@ -101,6 +101,10 @@ return acc_percentage
 end
 #ACCURACY COUNTER
 
+def words_per_minute(totalwords, totaltime)
+  wpm = (totalwords / totaltime)
+  return wpm
+end
 
 
 # def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
