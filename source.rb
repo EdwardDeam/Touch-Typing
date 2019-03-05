@@ -94,7 +94,7 @@ def letter_accuracy(original, test)
   return errors
 end
 test_str =      "Don't sweat the petty things and don't pet the sweaty things."
-user_test_str = "Don't sweat the petty things and don't pet the sweayy things."
+user_test_str = "Don't sweat the petty things and don't pet the sweayyyy things."
 prefect_str =   "Don't sweat the petty things and don't pet the sweaty things."
 accuracy_compare_two(test_str,user_test_str)
 
