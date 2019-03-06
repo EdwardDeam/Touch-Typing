@@ -19,7 +19,7 @@ Our secondary goal was to save the users statistics between sessions.
 
 # Planning
 
-![Brainstorm](docs/plan.jpg)
+![Brainstorm](docs/Plan.jpg)
 
 ![Trello1](docs/Trello.png)
 
