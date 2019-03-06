@@ -17,8 +17,9 @@ Keyboard Warrior is a terminal game created in ruby whereby the user types in ra
 Our primary aim was to create a program that would test the users typing speed and accuracy testing them on  randomly generated quotes. It would check the original quote against the one that the user wrote and return an accuracy percentage and a total words per minute.
 Our secondary goal was to save the users statistics between sessions.
 
-# Structure
+![Plan](docs/plan.pdf)
 
+# Structure
 
 # Features
 1. Pulls a selection of quotes from the Faker Gem.
@@ -41,21 +42,19 @@ ruby source.rb
 ```
 
 # Interface
+
 Launch Menu - User chooses whether they want to play in Colourblind mode
 
-*Image*
+![Colour](docs/Colourblind.png)
 
-Create / Load new user.
-
-*Image*
 
 Game Menu
 
-*Image*
+![Game](docs/StartGame.png)
 
 Score for current session
 
-*Image*
+![Score](doc/Results.png)
 
 # Master Repository
 https://github.com/EdwardDeam/Touch-Typing
