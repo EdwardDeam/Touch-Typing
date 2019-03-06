@@ -1,7 +1,6 @@
 class User
 attr_reader(:filename, :name)
-aatr_accessor(:wpm, :accuracy)
-
+attr_accessor(:wpm, :accuracy)
     def initialize(name)
         #checks to see if user file exists, if it does, loads user file.
         #if user does not exist, sets user attributes to 0.

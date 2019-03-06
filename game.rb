@@ -54,8 +54,8 @@ class Game
     end
     # Break the passed in strings by word into two arrays to make the data easier
     # to work with.
-    original_arr = original.split
-    user_string_arr = user_string.split
+    original_arr = original.split(" ")
+    user_string_arr = user_string.split(" ")
     # Loop the original array and compare to the user_string word by word.
     original_arr.each_with_index do |word, index|
       # If the words match then there is no need to cound total_errors so we can skip.
@@ -73,7 +73,14 @@ class Game
     # Split the passed in strings into arrays of characters to make them easier
     # to work with.
     original_word = original.split("")
-    test_word = test.split("")
+    # puts original
+    # puts test
+    # puts test.class()
+    # BLACK MAGIC: in cases where the string has no spaces it would throw an no method
+    # on nil.Class method.
+    test_str = test.to_s
+    test_word = test_str.split("")
+    # puts original.class()
     # Find the minimum number of total_errors by finding the difference in length
     # between the two arrays. eg "hello" vs "hellooo" would be a min of 2 
     # total_errors.
