@@ -1,5 +1,5 @@
 class User
-attr_reader(:filename, :name)
+attr_reader(:filename, :name, :to)
 attr_accessor(:wpm, :accuracy)
     def initialize(name)
         #checks to see if user file exists, if it does, loads user file.
@@ -11,6 +11,22 @@ attr_accessor(:wpm, :accuracy)
         else
             @wpm = 0.00
             @accuracy = 0.00
+        end
+    end
+
+    def add_wpm(new_wpm)
+        if @wpm == 0
+            @wpm = new_wpm
+        else
+            @wpm = ((@wpm + new_wpm) / 2.0).round(2)
+        end
+    end
+
+    def add_accuracy(new_accuracy)
+        if @accuracy == 0
+            @accuracy = new_accuracy
+        else
+            @accuracy = ((@accuracy + new_accuracy) / 2).round(2)
         end
     end
 
