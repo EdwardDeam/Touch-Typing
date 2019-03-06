@@ -10,7 +10,6 @@ class Game
     @level = Level.new(max_num_quotes)
     @total_time = 0
     @total_errors = 0
-    ### TEMP
     @accuracy = []
     @words_per_min = []
   end
