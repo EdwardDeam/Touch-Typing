@@ -11,8 +11,8 @@ class Game
     @total_time = 0
     @total_errors = 0
     ### TEMP
-    @accuracy = 0
-    @words_per_min = 0
+    @accuracy = []
+    @words_per_min = []
   end
 
   def run
@@ -20,8 +20,8 @@ class Game
        show_quote(quote)
        user_str = get_input
        errors = accuracy_comparison(quote, user_str)
-       @accuracy = accuracy_percentage(errors, quote.length)
-       @words_per_min = words_per_minute(@level.total_words, @total_time)
+       @accuracy << accuracy_percentage(errors, quote.length)
+       @words_per_min << words_per_minute(@level.total_words, @total_time)
        puts
       end
       puts "*"*51
@@ -29,8 +29,8 @@ class Game
   end
 
   def show_session_results
-    puts("Session Words Per Minute: #{@words_per_min}")
-    puts("Session Accuracy: #{@accuracy}%")
+    puts("Session Words Per Minute: #{get_session_wpm}")
+    puts("Session Accuracy: #{get_session_accuracy}%")
     puts
   end
 
@@ -133,6 +133,7 @@ class Game
 
   def accuracy_percentage(total_errors, stringlength)
     acc_percentage = (stringlength.to_f - total_errors.to_f )  / stringlength * 100
+    # puts ("ACC: #{acc_percentage.round(2)}") 
     return acc_percentage.round(2)
   end
 
@@ -144,5 +145,25 @@ class Game
   def show_quote(quote_string)
     puts (quote_string)
   end
+
+  def get_session_wpm
+    total = @words_per_min.sum / @words_per_min.length
+    return total
+  end
+
+  def get_session_accuracy
+    # puts @accuracy
+    total = @accuracy.sum / @accuracy.length
+    # puts("TOTAL ACC: #{total}")
+    return total
+  end
   
 end
+
+# TESTS
+# original_str = "Don't sweat the petty thing and don't pet the sweaty things."
+# extra_char_str = "Don't sweat the petty thingg and don't pet the sweeaty thinngs."
+# missing_char_str ="Don't sweat the pety thing and dont pet th sweaty things."
+
+# puts game.accuracy_comparison(original_str, extra_char_str)
+# puts game.accuracy_comparison(original_str, missing_char_str)
