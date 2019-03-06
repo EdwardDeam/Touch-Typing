@@ -17,6 +17,9 @@ Our primary aim was to create a program that would test the users typing speed a
 Our secondary goal was to save the users statistics between sessions.
 
 # Structure
+The program's functionality was split into 3 Classes, Game, Input and User. This allowed us to abstract some of the complexity of the functions away, making the code more readable. It has the added benefit of encapsulating variables that were only used in specific functions (eg. only storing the file path in the User class).
+The classes were put in separate files to enhance the readability of the code. The Input class pulls the data from 'faker' and saves it to an array that the Game class can use.  The Game class is used to call the methods that make up the main functionality, displaying the quotes and getting user input. The User class holds data related to the long term statistics of the user, to load and save this data between sessions.
+Apart from the main application loop, almost all of the functionality was put into methods. This allowed us to repeat certain sections of code over again, this part was particularly useful for the accuracy compare function. This function was broken into two parts, one to check each word and one part (letter_accuracy), to check each letter. This made a complex function easier to read and debug.
 
 # Features
 1. Pulls a selection of quotes from the Faker Gem.
@@ -30,6 +33,8 @@ Our secondary goal was to save the users statistics between sessions.
 * GEMS used:
 * Faker
 * Colorize
+* Date
+* IO/Console
 
 # Setup
 ```
