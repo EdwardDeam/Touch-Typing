@@ -1,4 +1,3 @@
-=======
 # Keyboard Warrior 
 
 Keyboard Warrior is a terminal game created in ruby whereby the user types in randomly generated greek philosopher quote.
@@ -16,8 +15,6 @@ Keyboard Warrior is a terminal game created in ruby whereby the user types in ra
 # Build process
 Our primary aim was to create a program that would test the users typing speed and accuracy testing them on  randomly generated quotes. It would check the original quote against the one that the user wrote and return an accuracy percentage and a total words per minute.
 Our secondary goal was to save the users statistics between sessions.
-
-![Plan](docs/plan.pdf)
 
 # Structure
 
@@ -50,7 +47,7 @@ Launch Menu - User chooses whether they want to play in Colourblind mode
 
 Game Menu
 
-![Game](docs/Start_Game.png)
+![Game](docs/StartGame.png)
 
 Score for current session
 
