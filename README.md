@@ -4,6 +4,7 @@ Keyboard Warrior is a terminal game created in ruby whereby the user types in ra
 
 ## Contents
 * [Build Process](#Build-Process)
+* [Planning](#Plan)
 * [Structure](#Structure)
 * [Features](#Features)
 * [Technical](#Technical)
@@ -15,6 +16,14 @@ Keyboard Warrior is a terminal game created in ruby whereby the user types in ra
 # Build process
 Our primary aim was to create a program that would test the users typing speed and accuracy testing them on  randomly generated quotes. It would check the original quote against the one that the user wrote and return an accuracy percentage and a total words per minute.
 Our secondary goal was to save the users statistics between sessions.
+
+# Planning
+
+![Brainstorm](docs/plan.jpg)
+
+![Trello1](docs/Trello.png)
+
+![TrelloComplete](docs/CompletedTrello.png)
 
 # Structure
 The program's functionality was split into 3 Classes, Game, Input and User. This allowed us to abstract some of the complexity of the functions away, making the code more readable. It has the added benefit of encapsulating variables that were only used in specific functions (eg. only storing the file path in the User class).
