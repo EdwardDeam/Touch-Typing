@@ -50,11 +50,11 @@ Launch Menu - User chooses whether they want to play in Colourblind mode
 
 Game Menu
 
-![Game](docs/StartGame.png)
+![Game](docs/Start_Game.png)
 
 Score for current session
 
-![Score](doc/Results.png)
+![Result](docs/Results.png)
 
 # Master Repository
 https://github.com/EdwardDeam/Touch-Typing
