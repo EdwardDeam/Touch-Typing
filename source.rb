@@ -67,6 +67,7 @@ def colourblind_menu
   end 
 end
 
+
 def press_any_key()
   input = nil
   puts "Press any key to continue..."
@@ -75,7 +76,7 @@ def press_any_key()
   end
   return input
 end
-  
+
 is_running = true
 system 'clear'
 # Check if color blind mode or not
@@ -88,7 +89,9 @@ current_user = User.new(name)
 # Main application loop
 while is_running
   # create a new game object
-  game = Game.new()
+
+  game = Game.new(5)
+
   menu_input = 0
   # Load appropriate menu based on colorblind selection
   if (cb_mode == 'y')
