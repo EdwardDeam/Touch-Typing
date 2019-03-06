@@ -28,9 +28,18 @@ class Level
   def quote_generator(total_quotes)
     quotes = []
     total_quotes.times do
+      # Load random quotes from faker gem
       quotes << Faker::GreekPhilosophers.quote
     end
       return quotes
   end
 
 end
+
+# TESTS
+
+# test_level = Level.new(5)
+# puts test_level.total_words
+# test_level.each do |quote|
+#   puts quote
+# end

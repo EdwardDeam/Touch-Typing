@@ -9,23 +9,28 @@ attr_accessor(:wpm, :accuracy)
         if does_user_exist()
             load_file
         else
+            # If the user has no saved data set attributes to 0
             @wpm = 0.00
             @accuracy = 0.00
         end
     end
 
     def add_wpm(new_wpm)
+        # If the user has no other stats just assign them
         if @wpm == 0
             @wpm = new_wpm
         else
+            # Save a WPM average
             @wpm = ((@wpm + new_wpm) / 2.0).round(2)
         end
     end
 
     def add_accuracy(new_accuracy)
+        # If the user has no other stats just assign them
         if @accuracy == 0
             @accuracy = new_accuracy
         else
+            # Save an accuracy average
             @accuracy = ((@accuracy + new_accuracy) / 2).round(2)
         end
     end
@@ -60,6 +65,13 @@ attr_accessor(:wpm, :accuracy)
     end
 end
 
+# Tests
+# test_user = User.new(testuser)
+# test_user.add_wpm(40)
+# puts test_user.wpm
+
+# test_user.add_accuracy(88)
+# puts test_user.accuracy
 
 
 

@@ -76,34 +76,42 @@ def press_any_key()
   return input
 end
   
-####
 is_running = true
 system 'clear'
+# Check if color blind mode or not
 cb_mode = launch_screen
 system 'clear'
 name = get_user_name
+# Create new user object to save statistics to
 current_user = User.new(name)
 
+# Main application loop
 while is_running
+  # create a new game object
   game = Game.new()
   menu_input = 0
+  # Load appropriate menu based on colorblind selection
   if (cb_mode == 'y')
     menu_input = colourblind_menu
   else
     menu_input = main_menu
   end
-    
+  # Switch on the user menu input to start the game, or save
+  # user data and exit.
   case menu_input
   when 1
     system 'clear'
     game.run
+    # Display Statitics to user
     puts("Lifetime Words Per Minute: #{current_user.wpm}.")
     puts("Lifetime Accuracy: #{current_user.accuracy}%")
     puts "*"*51
     press_any_key
-    current_user.add_wpm(game.words_per_min)
-    current_user.add_accuracy(game.accuracy)
+    # Save session data back to user object
+    current_user.add_wpm(game.get_session_wpm)
+    current_user.add_accuracy(game.get_session_accuracy)
   when 2
+    # Save data to file
     current_user.save_data
     is_running = false
     system 'clear'
