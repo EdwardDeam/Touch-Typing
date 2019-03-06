@@ -1,11 +1,11 @@
 class User
-attr_reader(:filename, :name, :to)
+attr_reader(:filepath, :name, :to)
 attr_accessor(:wpm, :accuracy)
     def initialize(name)
         #checks to see if user file exists, if it does, loads user file.
         #if user does not exist, sets user attributes to 0.
         @name = name
-        @filename = name + ".txt"
+        @filepath = "data/" + name + ".txt"
         if does_user_exist()
             load_file
         else
@@ -38,7 +38,7 @@ attr_accessor(:wpm, :accuracy)
     def load_file
         str_data = ""
         #pulling user information from txt file and splitting data into users name / wpm / accuracy.
-        File.foreach(@filename) do |line|
+        File.foreach(@filepath) do |line|
             str_data << line
         end
         str_data = str_data.split("/")
@@ -49,7 +49,7 @@ attr_accessor(:wpm, :accuracy)
 
     def does_user_exist()
         #checks to see if it can find user data
-        if (File.exists?(@filename))
+        if (File.exists?(@filepath))
             return true 
         else
             return false
@@ -59,7 +59,7 @@ attr_accessor(:wpm, :accuracy)
     def save_data()
         #creating a string of the data to use later in load
         data = @name + "/" + @wpm.to_s + "/" + @accuracy.to_s
-        File.open(@filename, "w") do |file|
+        File.open(@filepath, "w") do |file|
             file.puts(data)
         end
     end

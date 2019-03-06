@@ -40,7 +40,7 @@ Apart from the main application loop, almost all of the functionality was put in
 ```
 gem install faker
 gem install colorize
-ruby source.rb
+ruby start.rb
 ```
 
 # Interface
