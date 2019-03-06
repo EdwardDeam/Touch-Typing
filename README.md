@@ -35,7 +35,7 @@ Our secondary goal was to save the users statistics between sessions.
 ```
 gem install faker
 gem install colorize
-ruby source.rb
+ruby start.rb
 ```
 
 # Interface
