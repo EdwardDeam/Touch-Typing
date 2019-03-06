@@ -1,93 +1,93 @@
 
 require 'colorize'
 
-require_relative 'level.rb'
 require_relative 'game.rb'
+require_relative 'level.rb'
+require_relative 'user.rb'
   
 def launch_screen
   #ASKS WHETHER YOU WANT TO PLAY IN COLOURBLIND MODE
-  puts "*"*51
-  puts "COLOURBLIND MODE? (Y/N)".center(51)
-  puts "*"*51
-  input = gets().strip.upcase
+  input = nil
+  loop do
+    puts "*"*51
+    puts "COLOURBLIND MODE? (Y/N)".center(51)
+    puts "*"*51
+    input = gets().strip.downcase
+    # puts input
+      if (input == 'y' || input == 'n')
+        break
+      end
+    # puts("#{input} is input")
+  end
+  return input
 end
   
+def get_user_name
+  puts "Enter your name: "
+  name = gets.strip.downcase
+  return name
+end
+
 def main_menu 
   #DISPLAYS NON COLOURBLIND MENU
-  puts "#{"*".light_blue}#{"*".cyan}#{"*".blue}"*17
-  puts "1. START GAME". center(51).light_blue
-  puts "2. EXIT".center(51).light_blue
-  puts "#{"*".light_blue}#{"*".cyan}#{"*".blue}"*17
-  input = gets().strip.upcase
-  if (input == "1")
-  #ENTER GAME START (NOT FINISHED)
-  elsif (input == "2")
-    return
-  else
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50).red
-  end
+  loop do
+    # system 'clear'
+    puts "#{"*".light_blue}#{"*".cyan}#{"*".blue}"*17
+    puts "1. START GAME". center(51).light_blue
+    puts "2. EXIT".center(51).light_blue
+    puts "#{"*".light_blue}#{"*".cyan}#{"*".blue}"*17
+    input = gets.strip
+    if (input == "1")
+      return 1
+    elsif (input == "2")
+      return 2
+    else
+      puts "INVALID INPUT! SELECT 1 OR 2 PLEASE!".center(50).red
+    end
+  end 
 end
   
 def colourblind_menu
   #DISPLAYS COLOURBLIND MENU 
-  puts "*"*51
-  puts "1. START GAME".center(51)
-  puts "2. EXIT".center(51)
-  puts "*"*51
-  input = gets().strip.upcase
-  if (input == "1")
-    #ENTER GAME START (NOT FINISHED)
-  elsif (input == "2")
-    return
-  else
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-    puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-  end
-end
-  
-def colourblind_mode
-    program_running = (true)
-    while(program_running)
-      input = launch_screen
-      if(input == "Y")
-        return true
-      
-      elsif(input == "N")
-        return false
-        
-      else
-        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-        puts "DONT BREAK ME! PRESS 1 OR 2 PLEASE!".center(50)
-      end
+  loop do
+    # system 'clear'
+    puts "*"*51
+    puts "1. START GAME". center(51)
+    puts "2. EXIT".center(51)
+    puts "*"*51
+    input = gets.strip
+    if (input == "1")
+      return 1
+    elsif (input == "2")
+      return 2
+    else
+      puts "INVALID INPUT! SELECT 1 OR 2 PLEASE!".center(50)
     end
+  end 
 end
   
-def program_launch
-  if colourblind_mode
-    colourblind_menu
+####
+is_running = true
+cb_mode = launch_screen
+
+name = get_user_name
+current_user = User.new(name)
+
+while is_running
+  game = Game.new()
+  menu_input = 0
+  if (cb_mode == 'y')
+    menu_input = colourblind_menu
   else
-    main_menu
+    menu_input = main_menu
+  end
+    
+  case menu_input
+  when 1
+    game.run
+  when 2
+    current_user.save_data
+    is_running = false
+    # system 'clear'
   end
 end
-
-
-
-
-# def game_loop  ### NOT COMPLETED ( USE THIS TO MOVE INTO GAME START)
-# end
-
-
-app = Game.new()
-
-app.run
-
-puts("#{app.words_per_min} WPM")
-puts("#{app.accuracy} acc")
-
