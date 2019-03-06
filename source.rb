@@ -86,7 +86,7 @@ name = get_user_name
 current_user = User.new(name)
 
 while is_running
-  game = Game.new()
+  game = Game.new(5)
   menu_input = 0
   if (cb_mode == 'y')
     menu_input = colourblind_menu
