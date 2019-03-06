@@ -67,6 +67,7 @@ def colourblind_menu
   end 
 end
 
+
 def press_any_key()
   input = nil
   puts "Press any key to continue..."
@@ -75,7 +76,7 @@ def press_any_key()
   end
   return input
 end
-  
+
 ####
 is_running = true
 system 'clear'
