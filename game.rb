@@ -22,7 +22,16 @@ class Game
        errors = accuracy_comparison(quote, user_str)
        @accuracy = accuracy_percentage(errors, quote.length)
        @words_per_min = words_per_minute(@level.total_words, @total_time)
-    end
+       puts
+      end
+      puts "*"*51
+    show_session_results
+  end
+
+  def show_session_results
+    puts("Session Words Per Minute: #{@words_per_min}")
+    puts("Session Accuracy: #{@accuracy}%")
+    puts
   end
 
   def get_input
