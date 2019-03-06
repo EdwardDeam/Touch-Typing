@@ -65,6 +65,7 @@ def colourblind_menu
     end
   end 
 end
+
   
 ####
 is_running = true
