@@ -158,11 +158,3 @@ class Game
   end
   
 end
-
-# TESTS
-# original_str = "Don't sweat the petty thing and don't pet the sweaty things."
-# extra_char_str = "Don't sweat the petty thingg and don't pet the sweeaty thinngs."
-# missing_char_str ="Don't sweat the pety thing and dont pet th sweaty things."
-
-# puts game.accuracy_comparison(original_str, extra_char_str)
-# puts game.accuracy_comparison(original_str, missing_char_str)

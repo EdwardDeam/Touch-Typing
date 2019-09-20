@@ -5,7 +5,7 @@ attr_accessor(:wpm, :accuracy)
         #checks to see if user file exists, if it does, loads user file.
         #if user does not exist, sets user attributes to 0.
         @name = name
-        @filepath = "data/" + name + ".txt"
+        @filepath = "/data/" + name + ".txt"
         if does_user_exist()
             load_file
         else
@@ -64,14 +64,6 @@ attr_accessor(:wpm, :accuracy)
         end
     end
 end
-
-# Tests
-# test_user = User.new(testuser)
-# test_user.add_wpm(40)
-# puts test_user.wpm
-
-# test_user.add_accuracy(88)
-# puts test_user.accuracy
 
 
 

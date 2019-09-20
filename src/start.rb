@@ -94,11 +94,8 @@ while is_running
 
   menu_input = 0
   # Load appropriate menu based on colorblind selection
-  if (cb_mode == 'y')
-    menu_input = colourblind_menu
-  else
-    menu_input = main_menu
-  end
+  menu_input = cb_mode == 'y' ? colourblind_menu : main_menu
+
   # Switch on the user menu input to start the game, or save
   # user data and exit.
   case menu_input

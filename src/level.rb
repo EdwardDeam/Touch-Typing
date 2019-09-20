@@ -35,11 +35,3 @@ class Level
   end
 
 end
-
-# TESTS
-
-# test_level = Level.new(5)
-# puts test_level.total_words
-# test_level.each do |quote|
-#   puts quote
-# end
