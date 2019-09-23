@@ -16,12 +16,12 @@ class Game
 
   def run
     level.quotes.each do |quote|   
-       show_quote(quote)
-       user_str = get_input
-       errors = accuracy_comparison(quote, user_str)
-       @accuracy << accuracy_percentage(errors, quote.length)
-       @words_per_min << words_per_minute(@level.total_words, @total_time)
-       puts
+      show_quote(quote)
+      user_str = get_input
+      errors = accuracy_comparison(quote, user_str)
+      @accuracy << accuracy_percentage(errors, quote.length)
+      @words_per_min << words_per_minute(@level.total_words, @total_time)
+      puts
       end
       puts "*"*51
     show_session_results
