@@ -4,8 +4,12 @@ attr_accessor(:wpm, :accuracy)
     def initialize(name)
         #checks to see if user file exists, if it does, loads user file.
         #if user does not exist, sets user attributes to 0.
+        puts Dir.pwd
+        puts File.dirname(__FILE__)
         @name = name
-        @filepath = "/data/" + name + ".txt"
+        @filepath = File.dirname(__FILE__) + "/data/" + name + ".txt"
+        puts @filepath
+        raise
         if does_user_exist()
             load_file
         else
