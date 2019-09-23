@@ -4,7 +4,7 @@ attr_accessor(:wpm, :accuracy)
   def initialize(name)
     # If a save file exists load that data, otherwise set data to 0
     @name = name
-    @filepath = File.dirname(__FILE__) + "/data/" + name + ".txt"
+    @filepath = File.dirname(__FILE__) + "/data/" + name + ".sav"
     if user_exists?()
       load_data
     else
