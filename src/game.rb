@@ -34,21 +34,20 @@ class Game
   end
 
   def get_input
-    # Function: Get and return the user input and capture the time the input took
-    # and add it to an array that is passed in.
-    # Save first Time Point (tp1) in a Time object.
+    # Save first Time Point (tp1).
     tp1 = Time.now
     # Get user input, remove the final character and save it as a string.
     input = gets.chomp
-    # Save the Second Time Point (tp2) in a Time object.
+    # Save the Second Time Point (tp2).
     tp2 = Time.now
+
     # Find the time between the last and first time point and return the 
     # delta time in a float.
-    delta = tp2 - tp1
-    # Add the time to the time array that was passed in.
-    @total_time += delta
-    # Return the input string.
-    return input
+    delta_time = tp2 - tp1
+    
+    @total_time += delta_time
+    
+    input
   end
 
   def accuracy_comparison(original, user_string)
@@ -56,10 +55,9 @@ class Game
     # as an integer.
     # Integer counter of total_errors
     total_errors = 0
-    if(original == user_string)
-      # If the two strings are a perfect match the return 0 total_errors.
-      return total_errors
-    end
+    # If the two strings are a perfect match the return 0 total_errors.
+    return total_errors if(original == user_string)
+    
     # Break the passed in strings by word into two arrays to make the data easier
     # to work with.
     original_arr = original.split(" ")
@@ -80,21 +78,15 @@ class Game
     # Returns the smaller ammount of total_errors, giving the user a fairer game.
     # Split the passed in strings into arrays of characters to make them easier
     # to work with.
-    original_word = original.split("")
-    # puts original
-    # puts test
-    # puts test.class()
-    # BLACK MAGIC: in cases where the string has no spaces it would throw an no method
+    original_words = original.split("")
+    # In cases where the string has no spaces it would throw an no method
     # on nil.Class method.
-    test_str = test.to_s
-    test_word = test_str.split("")
-    # puts original.class()
+    test_words = test.to_str.split("")
     # Find the minimum number of total_errors by finding the difference in length
-    # between the two arrays. eg "hello" vs "hellooo" would be a min of 2 
-    # total_errors.
-    length_error = test_word.length - original_word.length
+    # between the two arrays. 
+    # eg "hello" vs "hellooo" would be a min of 2 total_errors.
+    length_errors = test_word.length - original_word.length
     # Runs two tests, one to compare the index of each array with each other
-    # (index_errors).
     # The other looks for the next letter needed and searches the array
     # until it finds it (letter_test_errors).
     letter_test_errors = 0
@@ -104,57 +96,49 @@ class Game
     # next_letter is the string to compare the search to
     next_letter = original_word[letter_index]
     # loop the original word running both tests simultaneously
-    original_word.each_with_index do |letter, index|
+    original_words.each_with_index do |letter, index|
       # Test to check if the index of each letter matches.
-      if letter != test_word[index]
+      if letter != test_words[index]
         # If the letters don't match then add one count to index total_errors.
         index_errors +=1
       end
       # Check if the letter needed is different from the next letter in the test
       # word
-      if next_letter != test_word[index]
+      if next_letter != test_words[index]
         # If the letter doesn't match then add an error to the letter text total_errors.
         letter_test_errors += 1
       else
         # If the characters matched then look for the next character in the
         # original string
         letter_index += 1
-        next_letter = original_word[letter_index]
+        next_letter = original_words[letter_index]
       end
     end
     # Find the smaller number of total_errors from the tests.
     test_errors = ([letter_test_errors, index_errors].min)
-    # puts("#{test_errors} test error")
-    # puts("#{length_error} min total_errors")
+  
     # Return the greater of test_errors or min_errors
-    test_errors < length_error ? length_error : test_errors
+    test_errors < length_errors ? length_errors : test_errors
   end
 
   def accuracy_percentage(total_errors, stringlength)
-    acc_percentage = (stringlength.to_f - total_errors.to_f )  / stringlength * 100
-    # puts ("ACC: #{acc_percentage.round(2)}") 
-    return acc_percentage.round(2)
+    ((stringlength.to_f - total_errors.to_f )  / stringlength * 100).round(2)
   end
 
   def words_per_minute(words, time)
-    wpm = (words.to_f / time.to_f) * 60.0
-    return wpm.round(2)
+    ((words.to_f / time.to_f) * 60.0).round(2)
   end
 
   def show_quote(quote_string)
-    puts (quote_string)
+    puts quote_string
   end
 
   def get_session_wpm
-    total = @words_per_min.sum / @words_per_min.length
-    return total
+    @words_per_min.sum / @words_per_min.length    
   end
 
   def get_session_accuracy
-    # puts @accuracy
-    total = @accuracy.sum / @accuracy.length
-    # puts("TOTAL ACC: #{total}")
-    return total
+    @accuracy.sum / @accuracy.length
   end
   
 end
