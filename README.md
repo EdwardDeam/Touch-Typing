@@ -4,14 +4,22 @@ Keyboard Warrior is a terminal game created in ruby whereby the user types in ra
 
 ## Contents
 * [Build Process](#Build-Process)
+* [Setup](#setup)
 * [Planning](#Plan)
 * [Structure](#Structure)
 * [Functionality](#Functionality)
 * [Technical](#Technical)
-* [Setup](#setup)
 * [Interface](#Interface)
 * [Authors](#Authors)
 * [Master Repository](#Master-Repository)
+
+# Setup
+```
+bundle install
+ruby src/start.rb
+```
+### Instructions
+After running start.rb select your color mode and enter your name. You will be shown a selction on quotes that you need to type as fast as possible. Afterwards  you will be shown statistics about how you went.
 
 # Build process
 Our primary aim was to create a program that would test the users typing speed and accuracy testing them on  randomly generated quotes. It would check the original quote against the one that the user wrote and return an accuracy percentage and a total words per minute.
@@ -47,15 +55,6 @@ Apart from the main application loop, almost all of the functionality was put in
 * Colorize
 * Date
 * IO/Console
-
-# Setup
-```
-gem install faker
-gem install colorize
-ruby start.rb
-```
-### Instructions
-After running start.rb select your color mode and enter your name. You will be shown a selction on quotes that you need to type as fast as possible. Afterwards  you will be shown statistics about how you went.
 
 # Interface
 
