@@ -81,11 +81,12 @@ class Game
     original_words = original.split("")
     # In cases where the string has no spaces it would throw an no method
     # on nil.Class method.
+    test = '' if test.nil?
     test_words = test.to_str.split("")
     # Find the minimum number of total_errors by finding the difference in length
     # between the two arrays. 
     # eg "hello" vs "hellooo" would be a min of 2 total_errors.
-    length_errors = test_word.length - original_word.length
+    length_errors = test_words.length - original_words.length
     # Runs two tests, one to compare the index of each array with each other
     # The other looks for the next letter needed and searches the array
     # until it finds it (letter_test_errors).
@@ -94,7 +95,7 @@ class Game
     # leter_index is the index of the letter that is currently being searched for
     letter_index = 0
     # next_letter is the string to compare the search to
-    next_letter = original_word[letter_index]
+    next_letter = original_words[letter_index]
     # loop the original word running both tests simultaneously
     original_words.each_with_index do |letter, index|
       # Test to check if the index of each letter matches.

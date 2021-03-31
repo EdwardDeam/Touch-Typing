@@ -18,7 +18,8 @@ class Level
 
   def total_words
     # Count the total number of words in all quotes in the array
-    @quotes.flatten.split(' ').length
+
+    @quotes.join.split(' ').length
   end
 
   def quote_generator(number_quotes)
